@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Black Book</title>
+<style>
+
+*{
+ margin: 0;
+ padding: 0;
+
+}
+
+.Button_Card{
+ height: auto;
+ width: 90%;
+ background-color: grey;
+ margin-left: 5%;
+ overflow: auto;
+ 
+}
+
+.Button_Card ul li{
+ list-style: none;
+ 
+}
+
+.Button{
+ height: 35px;
+ width: 80%;
+ background-color: purple;
+ cursor:pointer;
+ margin-left:10%;
+ margin-top: 20px;
+ margin-bottom: 20px;
+ 
+}
+.Display_Card{
+ height: 710px;
+ width: 90%;
+ background-color: grey;
+ display: none;
+ margin-left: 5%;
+ margin-top: 20px;
+ margin-bottom:20px;
+ overflow: auto;
+ 
+}
+
+</style>
+</head>
+<body>
+<script>
+
+var StoreBookStory = [
+    {
+    'name'        : 'Sura Fatiha',
+    'title'       : 'Ayat 8',
+    'buttonName'  : 'Sura Fatiha',
+    'description' : 'Lorem spa'
+    },
+   {
+    'name'        : 'Sura Bakara',
+    'title'       : 'Sura Bakar Ayat 255, 256',
+    'buttonName'  : 'Sura Bakara',
+    'description' : 'Lorem spa'
+   },
+   {
+   'name'        : 'Sura Tarik',
+   'title'       : 'Sura Tarik Ayat 78',
+   'buttonName'  : 'Sura Tarik',
+   'description' : 'Lorem spa'
+   },
+  {
+   'name'        : 'Sura Arrahman',
+   'title'       : 'Sura Bakar Ayat 255, 256',
+   'buttonName'  : 'Sura Soffat',
+   'description' : 'Lorem spa'
+   },
+   {
+    'name'        : 'Sura Soffat',
+    'title'       : 'Sura Bakar Ayat 255, 256',
+    'buttonName'  : 'Sura Arrahman',
+    'description' : 'Lorem spa'
+   },
+   {
+    'name'        : 'Sura Kafirun',
+    'title'       : 'Sura Kafirun Ayat 6',
+    'buttonName'  : 'Sura Kafirun',
+    'description' : 'Lorem spa doloret Side ametLorem spa doloret Side amet'+
+                    "Lorem spa doloret Side ametLorem spa"+
+                    'Lorem spa doloret Side ametLorem spa'+
+                    "Lorem spa doloret Side ametLorem spa"
+   }
+        
+];
+
+var SuraMatchPrint = [
+    'Sura Fatiha',
+    'Sura Bakara',
+    'Sura Tarik',
+    'Sura Arrahman',
+    'Sura Soffat',
+    'Sura Kafirun',
+    ''
+];
+
+
+</script>
+
+<header>
+
+</header>
+
+<content>
+  <div class="Button_Card" id="Button_Card">
+     <ul>
+        <script> 
+        for (var i=0; i<StoreBookStory.length; i++)
+        {
+         document.write('<li><button class="Button" onclick="ListDetails()">'+StoreBookStory[i].buttonName+'</button></li>');
+        }  
+        </script>
+     </ul>
+  </div>
+  
+  <div class="Display_Card" id="Display_Card">
+  <h3 id="Name_Show"></h3>
+  <h5 id="Title_Show"></h5>
+  <p id="Description_Show"></p>
+  <button type="button" id="BackBtn" onclick="Back()">Back</button>
+  
+  </div>
+  
+</content>
+
+<footer>
+
+</footer>
+<script>
+  
+  
+function ListDetails()
+{
+   var ButtonCard = document.querySelector('.Button_Card');   
+   var DisplayCard = document.getElementById("Display_Card");
+      
+      if(ButtonCard.style.display= "none")
+      {
+        DisplayCard.style.display= "block";
+        DisplayCard.style.transition= "2s";
+      }
+}
+
+ function Back()
+ {
+ var ButtonCard = document.querySelector('.Button_Card');
+ var DisplayCard = document.getElementById("Display_Card");
+  
+  if(ButtonCard.style.display= "block")
+  {
+     DisplayCard.style.display= "none";
+  }
+       
+ }
+ 
+ var len = document.querySelectorAll(".Button").length;
+ let nameShow = document.getElementById("Name_Show");
+ let titleShow = document.getElementById("Title_Show");
+ let descriptionShow = document.getElementById("Description_Show");
+ 
+ 
+for(var i=0; i<len; i++)
+{
+  let buttons = document.querySelectorAll(".Button")[i];
+  
+ buttons.addEventListener("click", function()
+ {
+  buttonText = this.innerHTML;
+  
+   for(var j=0; j<SuraMatchPrint.length; j++)
+   {
+       if(buttonText==SuraMatchPrint[j])
+       {
+        
+        nameShow.innerText = StoreBookStory[j].name;
+        titleShow.innerText = StoreBookStory[j].title;
+        descriptionShow.innerText = StoreBookStory[j].description;
+        
+        
+       }
+   }
+  
+ });
+ 
+} 
+      
+</script>
+</body>
+</html>
